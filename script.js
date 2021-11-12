@@ -1,59 +1,101 @@
-//Step 1.
-//Create an array with the 3 options.
-let pick = ['Rock', 'Paper', 'Scissors'];
-//Declare a variable named random that we are going to initialize in the computerPlay function, with this the computer will select randomly from the options
-let random;
-//Declare the variables with the string meassages
-let winner = 'Congratulations! You won! You beat the computer!';
-let loser = 'Looser! You lost the game against the computer.';
+const selection = document.querySelectorAll('img');
+const machineChoice = document.getElementById('machine-choice');
+const playerChoice = document.getElementById('player-choice'); 
+const playerScore = document.getElementById('player-score');
+const machineScore = document.getElementById('machine-score');
+const result = document.getElementById('result');
+
+//Select choices
+selection.forEach(item => item.addEventListener('click', pick));
+
+//Play round
+let playerSelection;
+let rounds = 1;
+
+function pick(e) {
+  for (let i = 0; rounds < 5; i++) {
+  rounds++;
+  playerSelection = e.target.id;
+  playerChoice.innerHTML = playerSelection;
+  computerPlay();
+  getResult(playerSelection, computerSelection);
+}
+}
+
+//Computer selection
+let computerSelection;
+function computerPlay() {
+  let random = Math.floor(Math.random() * selection.length);
+  if (random === 2) {
+    computerSelection = 'scissors';
+  }
+  if (random === 1) {
+    computerSelection = 'paper';
+  }
+  if (random === 0) {
+    computerSelection = 'rock';
+  }
+  machineChoice.innerHTML = computerSelection;
+  machineChoice.style.color = "#80ffdb";
+}
+
+//Get result
+let winner = 'Congratulations! You won! You beat the machine!';
+let loser = 'Looser! You lost the game against the machine.';
 let beat1 = ' Paper wraps Rock!';
 let beat2 = ' Scissors cuts Paper!';
 let beat3 = ' Rock crashes Scissors!';
 let tie = 'It\s a tie!';
 let gameOver = 'Game Over!';
-//Declare the variable for the rounds, starting from 1.
-let rounds = 1;
-//Step 2.
-//Create a function where the computer will pick randomly from the options.
-function computerPlay() {
-  random = pick[Math.floor(Math.random() * pick.length)];
-  return(random);
-}
-//Step 3.
-//Create an input for the player where he/she  can enter one of the options.
-let input = prompt('Choose from one of these options: Rock, Paper, or Scissors', 'Please enter either Rock, Paper, or Scissors!');
-//Step 4.
-//Declare the variables computerSelection and playerSelection.
-const computerSelection = computerPlay();
-const playerSelection = input;
-//Step 5.
-//Create a function where the player's choice and the computer's choice is compared and then a message is displayed.
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === 'Rock') {
-    if (computerSelection === 'Paper') {
-      return(beat1);
-  } else if (computerSelection === 'Scissors') {
-    return(beat3);
-  } else if (computerSelection === 'Rock') {
-    return(tie);
+
+let playerPoint = 0;
+let machinePoint = 0;
+
+function getResult(playerSelection, computerSelection) {
+  let text;
+  if (playerSelection === 'rock') {
+    if (computerSelection === 'paper') {
+      text = beat1;
+      machinePoint += 1;
+  } else if (computerSelection === 'scissors') {
+    text = beat3;
+    playerPoint += 1;
+  } else if (computerSelection === 'rock') {
+    text = tie;
+  }
+} 
+  if (playerSelection === 'paper') {
+    if (computerSelection === 'rock') {
+    text = beat1;
+    playerPoint += 1;
+  } else if (computerSelection === 'scissors') {
+    text = beat2;
+    machinePoint += 1;
+  } else if (computerSelection === 'paper') {
+    text = tie;
   }
 }
-  if (playerSelection === 'Paper') {
-    if (computerSelection === 'Rock') {
-    return(beat1);
-  } else if (computerSelection === 'Scissors') {
-    return(beat2);
-  } else if (computerSelection === 'Paper') {
-    return(tie);
-  }
-}
-  if (playerSelection === 'Scissors') {
-    if (computerSelection === 'Rock') {
-    return(beat3);
-  } else if (computerSelection === 'Paper') {
-    return(beat2);
+  if (playerSelection === 'scissors') {
+    if (computerSelection === 'rock') {
+    text = beat3;
+    machinePoint += 1;
+  } else if (computerSelection === 'paper') {
+    text = beat2;
+    playerPoint += 1;
   } else {
-    return(tie);
+    text = tie;
   }
  }
+  result.innerHTML = text;
+  machineScore.innerHTML = machinePoint;
+  playerScore.innerHTML = playerPoint;
+}
+
+//End game, announce winner
+function getWinner(playerPoint, machinePoint) {
+  if (playerPoint > machinePoint) {
+    result.innerHTML = gameOver + ' ' + winner;
+  } else {
+    result.innerHTML = gameOver + ' ' + loser;
+  }
 }
