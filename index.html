@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Virag Kormoczy">
-        <meta name="viewport" content="width= device-width, initial-scale= 1.0">
-        <title>Rock-paper-scissor</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <h1>Rock-Paper-Scissors</h1>
-        </header>
-        <div class="description">
-            <h2>You are playing against the machine! After 5 rounds the winner will be announced, good luck!</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Virag Kormoczy" />
+    <meta name="viewport" content="width= device-width, initial-scale= 1.0" />
+    <title>Rock-paper-scissor</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Rock-Paper-Scissors</h1>
+    </header>
+    <div class="description">
+      <h2>
+        You are playing against the machine! After 5 rounds the winner will be
+        announced, good luck!
+      </h2>
+    </div>
+    <div class="container">
+      <button class="item" id="rock">
+        <img src="images/rock.svg" id="rock" />
+      </button>
+      <button class="item" id="paper">
+        <img src="images/paper.svg" id="paper" />
+      </button>
+      <button class="item" id="scissors">
+        <img src="images/scissor.svg" id="scissors" />
+      </button>
+    </div>
+    <div class="output">
+      <div class="column-1">
+        <h2 id="choice">CHOICE</h2>
+        <div class="choice">
+          <h3>Player: <span id="player-choice"></span></h3>
+          <h3>Machine: <span id="machine-choice"></span></h3>
         </div>
-        <div class="container">
-            <img src="images/rock.svg" id="rock">
-            <img src="images/paper.svg" id="paper">
-            <img src="images/scissor.svg" id="scissors">
+      </div>
+      <div class="column-2">
+        <h2 id="score">SCORE</h2>
+        <div class="score">
+          <h3>Player: <span id="player-score"></span></h3>
+          <h3>Machine: <span id="machine-score"></span></h3>
         </div>
-        <div class="output">
-            <div class="column-1">
-                <h2 id="choice">CHOICE</h2>
-                <div class="choice">
-                       <h3>Player: <span id="player-choice"></span></h3>
-                       <h3>Machine: <span id="machine-choice"></span></h3>
-                </div>
-            </div>
-            <div class="column-2">
-                <h2 id="score">SCORE</h2>
-                <div class="score">
-                      <h3>Player: <span id="player-score"></span></h3>
-                     <h3>Machine: <span id="machine-score"></span></h3>
-                 </div>
-            </div>
-            <div class="column-3">
-                <p><span id="result"></span></p>
-            </div>
-        </div>
-    </body>
+      </div>
+      <div class="column-3">
+        <p><span id="result"></span></p>
+        <button id="btn" class="btn">New Game</button>
+      </div>
+    </div>
+  </body>
 </html>

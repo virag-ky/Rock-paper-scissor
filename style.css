@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  box-sizing: border-box;
   background-color: black;
+  font-family: "Courier New", Courier, monospace;
+  box-sizing: border-box;
 }
 header {
   background-color: #6930c3;
@@ -20,7 +21,7 @@ h1 {
 .description {
   border: solid #80ffdb;
   border-radius: 20px;
-  box-shadow: 0px 0px 25px #80ffdb;
+  box-shadow: 0px 0px 50px #80ffdb;
   margin-top: 50px;
   margin-left: 150px;
   margin-right: 150px;
@@ -32,7 +33,7 @@ h1 {
 .description h2 {
   color: #64dfdf;
   text-align: center;
-  font-size: 26px;
+  font-size: 30px;
 }
 img {
   width: 300px;
@@ -43,6 +44,27 @@ img {
   justify-content: center;
   gap: 25px;
   margin-top: 100px;
+}
+.item {
+  background-color: black;
+  border: solid #6930c3;
+  border-radius: 15px;
+}
+.item:hover {
+  box-shadow: 0px 0px 50px #8352d1;
+}
+.btn {
+  display: none;
+  background-color: #6930c3;
+  color: #64dfdf;
+  border-radius: 15px;
+  border: none;
+  width: 200px;
+  font-size: 22px;
+  padding: 10px;
+}
+.btn:hover {
+  box-shadow: 0px 0px 35px #64dfdf;
 }
 .output {
   display: flex;
@@ -88,4 +110,65 @@ span {
   width: 800px;
   padding: 25px;
   font-size: 34px;
+}
+#result {
+  line-height: 15px;
+}
+@media only screen and (max-width: 800px) {
+  .description h2 {
+    font-size: 10px;
+  }
+  header {
+    height: 30px;
+    width: 100%;
+  }
+  h1 {
+    font-size: 14px;
+  }
+  img {
+    width: 55px;
+  }
+  .description {
+    width: 180px;
+    margin: 15px auto;
+    padding: 5px;
+  }
+  h3,
+  span {
+    font-size: 10px;
+  }
+  h3 {
+    margin-left: 15px;
+  }
+  .output {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0px auto;
+  }
+  #choice,
+  #score {
+    font-size: 10px;
+  }
+  .choice,
+  .score {
+    width: 150px;
+    height: 60px;
+  }
+  .container {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  .column-3 {
+    margin: 0px auto;
+    width: 100px;
+    font-size: 10px;
+    padding: 5px;
+  }
+  .btn {
+    width: 60px;
+    padding: 5px;
+    font-size: 10px;
+  }
 }
